@@ -24,6 +24,10 @@ bot.on('message', async msg => {
         const mensagem = await msg.channel.send('?Ping');
         mensagem.edit(`!Pong, o ping é de ${mensagem.createdTimestamp - msg.createdTimestamp}ms!`);
     }
+
+    if(msg.content === '!quebreiprod') {
+        await msg.reply('https://tenor.com/view/michael-scott-steve-carell-crying-sad-tears-gif-7910100');
+    }
     if(msg.content.includes('!git')) {
         msg.delete();
         let username = msg.content.split(" ")[1];
