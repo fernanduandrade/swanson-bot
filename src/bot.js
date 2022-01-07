@@ -4,8 +4,26 @@ import api from './services/api.js';
 import axios from 'axios';
 dotenv.config();
 const bot = new discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"] });
-bot.once('ready', () => console.log('online!'));
-bot.on('message', msg => {
+
+const sleep = (ms) => {return new Promise(resolve => setTimeout(resolve, ms))};
+const msgs = [
+    'Meta é virar pleno',
+    'Escrevemos código',
+    'Javascripto, typescripto, C HashTAg',
+    'Spring Boot, GoLang, Node, DotnEt',
+];
+bot.once('ready', async() => {
+    while (1) {
+        bot.user.setActivity(msgs[Math.floor(Math.random() * msgs.length)], { type: "PLAYING"});
+        await sleep(30000);
+    }
+});
+bot.on('message', async msg => {
+    if(msg.content === '!ping') {
+        msg.delete();
+        const mensagem = await msg.channel.send('?Ping');
+        mensagem.edit(`!Pong, o ping é de ${mensagem.createdTimestamp - msg.createdTimestamp}ms!`);
+    }
     if(msg.content.includes('!git')) {
         msg.delete();
         let username = msg.content.split(" ")[1];
@@ -25,6 +43,7 @@ bot.on('message', msg => {
     }
 
     if(msg.content === '!stock') {
+        msg.delete();
         // https://fcsapi.com/api-v3/forex/base_latest?symbol=USD&type=forex&access_key=7koiEQwY5zjG3Lmo09Hc'
         api.get('base_latest?symbol=USD&type=forex&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
             msg.reply(`${result.data.msg}`)
@@ -32,6 +51,7 @@ bot.on('message', msg => {
     }
 
     if(msg.content === '!fracasso') {
+        msg.delete();
         api.get('history?symbol=USD/JPY&period=1h&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
             msg.reply(`${result.data.response['1640070000'].tm}`)
         })
