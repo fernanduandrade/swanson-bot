@@ -8,16 +8,16 @@ bot.once('ready', () => console.log('online!'));
 bot.on('message', msg => {
     if(msg.content.includes('!git')) {
         msg.delete();
-        let username = msg.content.split(" ");
-        axios.get(`https://api.github.com/users/${username[1]}`).then(result => {
-            console.log(username[1]);
+        let username = msg.content.split(" ")[1];
+        axios.get(`https://api.github.com/users/${username}`).then(result => {
+            console.log(username);
             console.log(result.data);
             const embedInfo = new discord.MessageEmbed()
                 .setAuthor(result.data.login, result.data.avatar_url, 'https://google.com')
-                .setTitle('um titulo')
+                .setTitle('Github profile')
                 .setDescription((result.data.bio === null ? 'não tem bio' : result.data.bio))
                 .setColor('#d32256')
-                .setFooter(result.data.avatar_url)
+                .setFooter(`quantidade de repositórios: ${result.data.public_repos}`)
                 
             console.log(embedInfo)
             msg.channel.send({embeds: [embedInfo]});
