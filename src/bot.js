@@ -41,17 +41,32 @@ bot.on('message', async msg => {
                 .setColor('#d32256')
                 .setFooter(`quantidade de repositórios: ${result.data.public_repos}`)
                 
-            console.log(embedInfo)
             msg.channel.send({embeds: [embedInfo]});
         });
     }
 
-    if(msg.content === '!stock') {
+    if(msg.content === '!teste') {
         msg.delete();
         // https://fcsapi.com/api-v3/forex/base_latest?symbol=USD&type=forex&access_key=7koiEQwY5zjG3Lmo09Hc'
         api.get('base_latest?symbol=USD&type=forex&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
+            console.log(result.data);
             msg.reply(`${result.data.msg}`)
         });
+    }
+
+    if(msg.content === '!teste1') {
+        msg.delete();
+        api.get('profile?symbol=USD&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
+            console.log(result.data);
+            msg.reply(`${result.data.msg}`)
+        })
+    }
+
+    if(msg.content === '!teste2') {
+        msg.delete();
+        api.get('economy_cal?symbol=USD,JPY&from=2022-01-11&to=2022-01-12&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
+            console.log(result.data);
+        })
     }
 
     if(msg.content === '!fracasso') {
@@ -63,6 +78,10 @@ bot.on('message', async msg => {
 
     if(msg.content === '!maquinadecodar') {
         msg.reply('https://cdn.discordapp.com/attachments/662667257658474519/928019803606777876/IMG_20220104_171915.jpg');
+    }
+
+    if(msg.content === '!tchacatchacanabutchaca') {
+        await msg.reply('https://tenor.com/view/skylab-defante-aplauso-gif-23138015')
     }
 });
 
