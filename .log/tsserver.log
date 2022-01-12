@@ -1,0 +1,20 @@
+Info 0    [19:30:09.592] Starting TS Server
+Info 1    [19:30:09.596] Version: 4.5.4
+Info 2    [19:30:09.596] Arguments: C:\Program Files\nodejs\node.exe c:\Users\Fernando\AppData\Roaming\npm\node_modules\typescript\lib\tsserver.js --logFile c:\Users\Fernando\Desktop\swanson-bot\.log\tsserver.log --logVerbosity info --cancellationPipeName C:\Users\Fernando\AppData\Local\Temp\15d4525a44659ed0dc4b740f9aef3a3f\tscancellation*
+Info 3    [19:30:09.596] Platform: win32 NodeVersion: 16 CaseSensitive: false
+Info 4    [19:30:09.596] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [19:30:09.642] Format host information updated
+Info 6    [19:30:09.802] Search path: c:/Users/Fernando/Desktop/swanson-bot/src
+Info 7    [19:30:09.805] For info: c:/Users/Fernando/Desktop/swanson-bot/src/bot.js :: No config files found.
+Info 8    [19:30:09.814] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 9    [19:30:12.479] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 2664.6782999932766ms
+Info 10   [19:30:12.479] Project '/dev/null/inferredProject1*' (Inferred)
+Info 11   [19:30:12.479] 	Files (231)
+
+Info 12   [19:30:12.480] -----------------------------------------------
+Info 13   [19:30:12.499] Starting updateGraphWorker: Project: /dev/null/autoImportProviderProject1*
+Info 14   [19:30:12.771] Finishing updateGraphWorker: Project: /dev/null/autoImportProviderProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 272.53119999170303ms
+Info 15   [19:30:12.771] Project '/dev/null/autoImportProviderProject1*' (AutoImportProvider)
+Info 16   [19:30:12.771] 	Files (13)
+
+Info 17   [19:30:12.771] -----------------------------------------------

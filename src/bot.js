@@ -69,6 +69,10 @@ bot.on('message', async msg => {
         })
     }
 
+    if(msg.content === '!bomdia') {
+        msg.reply('https://tenor.com/view/webamigos-bom-dia-caralho-caralho-krl-gif-21817066');
+    }
+
     if(msg.content === '!fracasso') {
         msg.delete();
         api.get('history?symbol=USD/JPY&period=1h&access_key=7koiEQwY5zjG3Lmo09Hc').then(result => {
