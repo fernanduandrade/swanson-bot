@@ -31,7 +31,7 @@ bot.on('message', async msg => {
         await msg.reply('https://tenor.com/view/michael-scott-steve-carell-crying-sad-tears-gif-7910100');
     }
 
-    if(msg.content.includes === '!doguinho') {
+    if(msg.content.includes('!doguinho')) {
         msg.delete();
         const dogBreed = msg.content.split(' ')[1];
         const apiDog =  `https://dog.ceo/api/breed/${dogBreed}/images/random`;
