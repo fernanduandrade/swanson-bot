@@ -32,12 +32,12 @@ bot.on('message', async msg => {
     }
 
     if(msg.content.includes('!doguinho')) {
-        msg.delete();
         const dogBreed = msg.content.split(' ')[1];
         const apiDog =  `https://dog.ceo/api/breed/${dogBreed}/images/random`;
         axios.get(apiDog).then(result => {
-            msg.reply(result.data.message);
-        }).catch(() => msg.reply('``❌`` Cachorro invalida!'))
+            const img = result.data.message;
+            msg.channel.reply(img);
+        });
     }
 
     if(msg.content.includes('!color')) {
