@@ -8,9 +8,10 @@ const bot = new discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"] });
 const sleep = (ms) => {return new Promise(resolve => setTimeout(resolve, ms))};
 const msgs = [
     'Meta é virar pleno',
-    'Escrevemos código',
+    'Pedreiros de código',
     'Javascripto, typescripto, C HashTAg',
     'Spring Boot, GoLang, Node, DotnEt',
+    'public long Name {get; set;}'
 ];
 bot.once('ready', async() => {
     while (1) {
@@ -26,22 +27,42 @@ bot.on('message', async msg => {
     }
 
     if(msg.content === '!quebreiprod') {
+        msg.delete();
         await msg.reply('https://tenor.com/view/michael-scott-steve-carell-crying-sad-tears-gif-7910100');
     }
 
+    if(msg.content.includes === '!doguinho') {
+        msg.delete();
+        const dogBreed = msg.content.split(' ')[1];
+        const apiDog =  `https://dog.ceo/api/breed/${dogBreed}/images/random`;
+        axios.get(apiDog).then(result => {
+            msg.reply(result.data.message);
+        }).catch(() => msg.reply('``❌`` Cachorro invalida!'))
+    }
+
     if(msg.content.includes('!color')) {
+        msg.delete();
         const color = msg.content.split(' ')[1];
-        return msg.guild.roles.create({
-            name: msg.author.tag,
-            color: color,
-            mentionable: false,
-            position: 60
-        })
-        .then(role => {
-            msg.reply(`Teste mudar de cor`)
-            msg.member.roles.add(role);
-        })
-        .catch(() => msg.reply('deu ruim'));
+        
+		const nick = msg.author.tag;
+        const role = msg.guild.roles.cache.find(x => /.+#\d{4}/i.test(x.name));
+        
+        if (!role) {
+            return msg.guild.roles.create({
+                    name: nick,
+                    color: color,
+                    mentionable: false,
+                    position: 60,
+                })
+                .then(newRole => {
+                    msg.reply(
+                        `Cor criada com sucesso! hex(${newRole.color})`
+                    );
+
+                    msg.member.addRole(newRole);
+                })
+                .catch(() => msg.reply('``❌`` Cor invalida!'));
+        }
     }
 
     if(msg.content.includes('!github')) {
@@ -62,14 +83,17 @@ bot.on('message', async msg => {
     }
 
     if(msg.content === '!maquinadecodar') {
+        msg.delete();
         msg.reply('https://cdn.discordapp.com/attachments/662667257658474519/928019803606777876/IMG_20220104_171915.jpg');
     }
 
     if(msg.content === '!tchacatchacanabutchaca') {
+        msg.delete();
         await msg.reply('https://tenor.com/view/skylab-defante-aplauso-gif-23138015')
     }
 
     if(msg.content === '!bomdia') {
+        msg.delete();
         msg.reply('https://tenor.com/view/webamigos-bom-dia-caralho-caralho-krl-gif-21817066');
     }
 
