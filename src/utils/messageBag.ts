@@ -12,5 +12,6 @@ export const msgBag: Array<string> = [
     'Lambda com c#',
     'λ💻',
     'JSON Statham',
-    'Agora rodo com typescripto'
+    'Agora rodo com typescripto',
+    'Como usar classes em C'
 ];
